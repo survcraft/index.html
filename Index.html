@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep Minecraft - VIP i SVIP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .product {
+            background-color: #fff;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 45%;
+        }
+        .product h3 {
+            margin: 10px 0;
+        }
+        .product .price {
+            font-size: 1.5em;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sklep Minecraft - Kup VIP i SVIP</h1>
+    </header>
+    <div class="container">
+        <div class="product">
+            <h3>VIP</h3>
+            <div class="price">10 PLN</div>
+            <form action="" method="POST" id="vipForm">
+                <input type="text" name="playerName" placeholder="Podaj swój nick Minecraft" required />
+                <button type="submit" onclick="buy('VIP')">Kup VIP</button>
+            </form>
+        </div>
+        <div class="product">
+            <h3>SVIP</h3>
+            <div class="price">20 PLN</div>
+            <form action="" method="POST" id="svipForm">
+                <input type="text" name="playerName" placeholder="Podaj swój nick Minecraft" required />
+                <button type="submit" onclick="buy('SVIP')">Kup SVIP</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function buy(rank) {
+            var playerName = document.querySelector('[name="playerName"]').value;
+            window.location.href = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=YOUR_PAYPAL_EMAIL&item_name=' + rank + '&amount=' + (rank === 'VIP' ? '10.00' : '20.00') + '&currency_code=PLN&return=http://twoj-serwer-minecraft.com/thankyou&cancel_return=http://twoj-serwer-minecraft.com/cancel&custom=' + playerName;
+        }
+    </script>
+</body>
+</html>
